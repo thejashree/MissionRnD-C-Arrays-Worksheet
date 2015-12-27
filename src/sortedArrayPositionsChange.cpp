@@ -17,16 +17,17 @@ void * sortedArrayPositionsChange(int *Arr, int len)
 {
 	if (Arr == NULL || len <= 0)
 		return NULL;
-	int c,d,t;
-	for (c = 1; c <= len; c++) {
-		d = c;
-
-		while (d > 0 && Arr[d] < Arr[d - 1]) {
-			t = Arr[d];
-			Arr[d] = Arr[d - 1];
-			Arr[d - 1] = t;
-
-			d--;
+	int c, d, swap;
+	for (c = 0; c < len; c++)
+	{
+		for (d = 0; d < len - c - 1; d++)
+		{
+			if (Arr[d] > Arr[d + 1]) /* For decreasing order use < */
+			{
+				swap = Arr[d];
+				Arr[d] = Arr[d + 1];
+				Arr[d + 1] = swap;
+			}
 		}
 	}
 }
